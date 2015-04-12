@@ -1,0 +1,127 @@
+<div class = "login" ng-hide = "authenticated">
+<img class = "text-center" src="images/Logo-Capgemini_imagelarge.jpg" alt="Capgemini"><br>
+<h1>Login - <small>Connectez-vous pour accéder à l'application.</small></h1>
+<form class="form-auth" ng-submit="login()">
+	<div class="alert alert-danger" role="alert" ng-show ="error_message" >
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Error:</span>
+	  {{error_message}}
+	</div>
+	
+	<input type="username" ng-model="user.username" placeholder="Username" class="form-control"><br>
+	<input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>
+	<input type="submit" value="Log in" class="btn btn-primary" />
+</form>
+ Créer un compte : <a href="#/register">S'inscrire</a>
+</div>
+
+<div class = "informations" ng-show = "authenticated">
+	<h4>infos</h4>
+ 	<div class="alert alert-danger" role="alert" ng-hide = "infos.length" ><!-- ng-hide = "collaborateurs.length" --> 
+	<span class="glyphicon glyphicon-ban-circle"> Désolé ! aucun collaborateur dans la base de données.</div>
+<div class="row" ng-repeat = "collab in infos">
+
+    <div class="row padall">
+        <div class="col-xs-4 col-sm-8 col-md-3 col-lg-3">
+            <span></span>
+            <img src="../images/user.png" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
+            <div class="clearfix">
+                <div class="pull-left">
+                    <span class= "icon"> {{collab.Employee_name}}</span>
+                </div>
+                <div class="pull-right">
+                    Interne | PU: {{collab.Emp_prod_unit}} 
+                </div>
+            </div>
+            <div>
+                <h4><span class="fa fa-map-marker icon"></span> Projet : {{collab.Project_name}} </h4>
+                 Client : {{collab.Customer_name}} 
+                
+                 <span class="glyphicon glyphicon-plus pull-right" data-toggle="collapse" data-target="#demo"></span>
+                
+            </div>
+          
+        </div>
+  
+	</div>
+	<hr>
+	<div id = "demo" class = "collapse">
+		<h2>{{collab.Employee_name}} - <small>{{collab.Project_name}}</small></h2>
+		<hr>
+		<blockquote class = "view_coll">
+		<p>Id : <strong>{{collab.Employee_number}}</strong>.</p>
+		<p>Nom: <strong>{{collab.Employee_name}}</strong>.</p>
+		<p>Type : <strong>{{collab.Employee_Type}}</strong>.</p>
+		<p>PU interne : <strong>{{collab.Internal_PU}}</strong>.</p>
+		<p>PU: <strong>{{collab.Emp_prod_unit}}</strong>.</p>
+		<p>Fonction : <strong>{{collab.Job_function}}</strong>.</p>
+		<p>Qualif : <strong>{{collab.Job_qualif}}</strong>.</p></blockquote>
+		<hr>
+		<blockquote class = "view_coll"><p>Id projet :<strong>{{collab.Project_number}}</strong>.</p>
+		<p>Projet : <strong>{{collab.Project_name}}</strong>.</p>
+		<p>type : <strong>{{collab.Project_type}}</strong>.</p>
+		<p>Projet PU : <strong>{{collab.Project_prod_unit}}</strong>.</p></blockquote>
+		<hr>
+		<blockquote class = "view_coll"><p>Id client :<strong>{{collab.Customer_number}}</strong>.</p>
+		<p>Client :<strong>{{collab.Customer_name }}</strong>.</p></blockquote>
+	</div>
+</div>
+	<!-- <div class="container" >
+	    <div class="row" ng-repeat = "collab in infos">
+	        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-12 ">
+	            <div class="panel panel-default" ng-class-odd="'odd'" ng-class-even="'even'">
+	                <div class="row padall">
+	                    <div class="col-xs-4 col-sm-8 col-md-3 col-lg-3">
+	                        <span></span>
+	                        <img src="../images/user.png" />
+	                    </div>
+	                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
+	                        <div class="clearfix">
+	                            <div class="pull-left">
+	                                <span class= "icon"> {{collab.Employee_name}}</span>
+	                            </div>
+	                            <div class="pull-right">
+	                                Interne | PU: {{collab.Emp_prod_unit}} 
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <h4><span class="fa fa-map-marker icon"></span> Projet : {{collab.Project_name}} </h4>
+	                             Client : {{collab.Customer_name}} 
+	                             <a ng-href="/#/collaborateur/{{ collab._id }}">
+	                             <span class="glyphicon glyphicon-plus pull-right"></span></a>
+	                            
+	                        </div>
+	                      
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	    </div> -->
+	 
+	</div>
+
+
+<!--<table class = "table table-striped" ng-show = "collaborateurs.length">
+	<thead>
+		<th>Nom</th>
+		<th>Division</th>
+		<th>Operations</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "collab in collaborateurs">
+		<td><a ng-href="/#/collaborateur/{{ collab._id }}">{{collab.Employee_name}}</a></td>
+		<td>{{collab.Employee_Type}}</td>
+		<td>
+			<a ng-href="/#/collaborateur/{{ collab._id }}"><span class="glyphicon glyphicon-eye-open"></span></a>	
+			<a  href="/#/collaborateur/{{collab._id}}/edit"><span class="glyphicon glyphicon-edit"></span></a>
+			<a  href="/#/collaborateur/{{collab._id}}/delete"><span class="glyphicon glyphicon-remove"></span></a>
+		</td>
+		</tr>
+	</tbody>
+</table> 
+-->
+
+</div>
