@@ -96,12 +96,13 @@ body {
 	
 }
 .even {
-	background-color: #eceff3;
+	background-color:#F7ECF7;
 }
 
 .view_coll{
 
-background-color: #eceff3;  
+background-color: #F1F1F1;
+ border-radius: 0.55em  
 }
 
 #choix {
@@ -114,7 +115,7 @@ background-color: #eceff3;
 
 .row .padall{
   padding: 20px;
-  border-radius: 0.35em
+  border-radius: 0.85em
 }
 
 .input-group{
@@ -123,4 +124,7 @@ background-color: #eceff3;
 
 .label{
   padding-right: 5px;
+}
+span.glyphicon:hover{
+  cursor : pointer;
 }
