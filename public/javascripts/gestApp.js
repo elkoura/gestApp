@@ -36,12 +36,20 @@ app.factory('infoService', function($resource){
 	return $resource('/api/infos/:id');
 });
 
-app.controller('mainController', function(infoService, $scope, $http, $rootScope, $location){
+app.controller('mainController', function(infoService, $scope, $http, $rootScope, $location){$scope.searchCriteria="";
 	$scope.infos = infoService.query();
+// $scope.Filtrer = function(){
+// alert("totoo")
+// };
+$scope.searchText = '';
+
+$scope.vider = function(){
+$scope.searchText = '';
+};
 
 	$scope.user = {username: '', password: ''};
   	$scope.error_message = '';
-
+    $scope.listChoix = ['Collaborateur', 'Projet', 'Client', '...'];
 	$scope.login = function(){
     $http.post('/auth/login', $scope.user).success(function(data){
       if(data.state == 'success'){

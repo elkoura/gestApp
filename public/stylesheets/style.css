@@ -103,3 +103,24 @@ body {
 
 background-color: #eceff3;  
 }
+
+#choix {
+
+  width: 30%;
+  display:  inline;
+  margin-bottom: 45px;
+
+}
+
+.row .padall{
+  padding: 20px;
+  border-radius: 0.35em
+}
+
+.input-group{
+  margin-bottom: 15px;
+}
+
+.label{
+  padding-right: 5px;
+}
