@@ -49,7 +49,11 @@ $scope.searchText = '';
 
 	$scope.user = {username: '', password: ''};
   	$scope.error_message = '';
-    $scope.listChoix = ['Collaborateur', 'Projet', 'Client', '...'];
+    $scope.listChoix = [{ name:'Collaborateur', value: 'Employee_name'},
+                        { name:'Projet', value: 'Project_name'},
+                        { name:'Client', value: 'Customer_name'}];
+
+$scope.selected = '$';
 	$scope.login = function(){
     $http.post('/auth/login', $scope.user).success(function(data){
       if(data.state == 'success'){

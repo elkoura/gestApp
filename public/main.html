@@ -21,25 +21,26 @@
 	<span class="glyphicon glyphicon-ban-circle"> Désolé ! aucun collaborateur dans la base de données.</div>
 
 	
-<form class="form-horizontal clearfix">
+<form class="form-horizontale ">
 	
       
    <!--  <div class="form-group">
       	<input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-model="searchText">
         <span><button class="btn btn-default" type="button" ng-model="searchxxText"><span class="glyphicon glyphicon-remove"  ></span></button></span>
     </div> -->
-  	
+  	<div class="form-group" >
+    	<label for="title" class="control-label">Recherche par : </label>
+    	<select class="form-control" ng-options="item.value as item.name for item in listChoix " ng-model="selected"></select>
+  	</div>
 	<div class="input-group">
 		 <span class="input-group-addon glyphicon glyphicon-search " id="basic-addon1"></span>
-	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-model="searchText" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == '$'" data-ng-model="searchText.$" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Employee_name'" data-ng-model="searchText.Employee_name" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Project_name'" data-ng-model="searchText.Project_name" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Customer_name'"data-ng-model="searchText.Customer_name" aria-describedby="basic-addon2">
 	  <span class="input-group-addon" id="basic-addon2" ng-show = "searchText" ng-click = "vider()"><span class="glyphicon glyphicon-remove"  ></span></span>
 	</div>
-    <div class="form-group pull-left" >
-    	<label for="title" class="control-label">Recherche par : </label>
-      	<select class="form-control" ng-model="by"  ng-init="by = listChoix[0] "> 
-        <option ng-repeat="choix in listChoix" value="{{choix}}">{{choix}}</option>
-     	</select>
-  	</div>
+    
 
 </form>
 	<div class="row" ng-repeat = "collab in infos  | filter:searchText">
