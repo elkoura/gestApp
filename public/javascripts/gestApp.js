@@ -43,6 +43,15 @@ app.controller('mainController', function(infoService, $scope, $http, $rootScope
 // };
 $scope.searchText = '';
 
+var updateClock = function() {
+$scope.clock = new Date();
+};
+setInterval(function() {
+$scope.$apply(updateClock);
+}, 1000);
+updateClock();
+
+
 $scope.vider = function(){
 $scope.searchText = '';
 };

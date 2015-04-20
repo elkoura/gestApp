@@ -1,6 +1,6 @@
 <div class = "login" ng-hide = "authenticated">
-	<img class = "text-center" src="images/Logo-Capgemini_imagelarge.jpg" alt="Capgemini"><br>
-	<h1>Login - <small>Connectez-vous pour accéder à l'application.</small></h1>
+	
+	<h3>Login - <small>Connectez-vous pour accéder à l'application.</small></h3>
 	<form class="form-auth" ng-submit="login()">
 		<div class="alert alert-danger" role="alert" ng-show ="error_message" >
 		  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -10,16 +10,22 @@
 		
 		<input type="username" ng-model="user.username" placeholder="Username" class="form-control"><br>
 		<input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>
-		<input type="submit" value="Log in" class="btn btn-primary" />
+		<input type="submit" value="Log in" class="btn btn-primary" />	<span>ou <a href="#/register">S'inscrire</a></span>
 	</form>
-	 Créer un compte : <a href="#/register">S'inscrire</a>
+	<hr>
+ <div class="col-md-6 col-md-offset-3">
+	  <img  src="images/logo.png" alt="Capgemini" class="img-responsive">
+	
+	 </div>
 </div>
 
 
 <div class = "informations" ng-show = "authenticated">
  	<div class="alert alert-danger" role="alert" ng-hide = "infos.length" >
 	<span class="glyphicon glyphicon-ban-circle"> Désolé ! aucun collaborateur dans la base de données.</div>
-
+<!-- <div>
+<h2>il est : {{clock | date:'MM/dd/yyyy @ h:mm:ssa'}} </h2>
+</div> -->
 	
 <form class="form-horizontale ">
 	

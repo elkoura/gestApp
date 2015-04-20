@@ -36,12 +36,8 @@ body {
   padding-bottom: 3px;
   color: #777;
   border-top: 1px solid #e5e5e5;
-  position: relative;
   background-color:#e7e7e7;
-  bottom:0px;
-  left:0px;
-  right:0px;
-  margin-bottom:0px;
+ 
 }
 .navbar {
   margin-bottom: auto;
