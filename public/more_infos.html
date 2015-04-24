@@ -1,0 +1,61 @@
+<!-- Modal -->
+<div class="modal fade" id="more" tabindex="-1" role="dialog" aria-labelledby="moreLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="moreLabel">{{collab.Name}} - <small>{{collab.Type}}</small></h4>
+      </div>
+      <div class="modal-body">
+			<div class = "view_coll">
+			<p>Id : <strong>{{collab.Number}}</strong>.</p>
+			<p>Nom: <strong>{{collab.Name}}</strong>.</p>
+			<p>Type : <strong>{{collab.Type}}</strong>.</p>
+			<p>Qualif : <strong>{{collab.Qualif}}</strong>.</p>
+			<p>Grade : <strong>A</strong>.</p>
+			<p>Sickness : <strong>{{collab.Sickness}}</strong>.</p>
+			<p>Bench : <strong>{{collab.Bench}}</strong>.</p>
+			<p>Total Worked Time: <strong>{{collab.Total_Worked_Time}}</strong>.</p>
+			<p>PS Billable: <strong>{{collab.PS_Billable}}</strong>.</p>
+			<p>PS Unpaid : <strong>{{collab.PS_Unpaid}}</strong>.</p>
+			<p>Paid Hol : <strong>{{collab.Paid_Hol}}</strong>.</p>
+			<p>Not Paid Hol : <strong>{{collab.Not_Paid_Hol}}</strong>.</p>
+			<p>Statutory Recovery : <strong>{{collab.Statutory_Recovery}}</strong>.</p>
+			<p>Internal Work : <strong>{{collab.Internal_Work}}</strong>.</p>
+			</div>
+			<hr>
+			
+			<div class="panel panel-default">
+	          <div class="panel-heading">
+	            <h4 class="panel-title">
+	              <a data-toggle="collapse" data-target="#demo">Statistiques</a>
+	            </h4>
+	          </div>
+	          <div id="demo" class="panel-collapse collapse ">
+	            <div class="panel-body">
+
+	            	<p>ARVE :<span ><progressbar class="progress-striped active" value="25" type="info">25%</progressbar>
+	            	</span></p>
+					<p>ARVI :<span ><progressbar class="progress-striped active" value="14" type="danger">14%</progressbar>
+	            	</span></p>
+	            	<p>Utilisation : <span ><progressbar class="progress-striped active" value="88" type="info">88}%</progressbar>
+	            	</span></p>
+	            </div>
+	          </div>
+	        </div>
+			
+			
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fin modal -->
+
+  
+  
+  
+   

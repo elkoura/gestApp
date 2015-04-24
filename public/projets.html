@@ -1,0 +1,113 @@
+<div class = "informations" ng-show = "authenticated">
+ 	<div class="alert alert-danger" role="alert" ng-hide = "infos.length" >
+	<span class="glyphicon glyphicon-ban-circle"></span> Désolé ! aucun collaborateur dans la base de données.</div>
+
+	
+<form class="form-horizontale ">
+	
+  	<div class="form-group" >
+    	<label for="title" class="control-label">Recherche par : </label>
+    	<select class="form-control" ng-options="item.value as item.name for item in listChoix " ng-model="selected"></select>
+  	</div>
+	<div class="input-group">
+		 <span class="input-group-addon glyphicon glyphicon-search " id="basic-addon1"></span>
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == '$'" data-ng-model="searchText.$" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Employee_name'" data-ng-model="searchText.Employee_name" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Project_name'" data-ng-model="searchText.Project_name" aria-describedby="basic-addon2">
+	  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Customer_name'"data-ng-model="searchText.Customer_name" aria-describedby="basic-addon2">
+	  <span class="input-group-addon" id="basic-addon2" ng-show = "searchText" ng-click = "vider()"><span class="glyphicon glyphicon-remove"  ></span></span>
+	</div>
+    
+
+</form>
+
+	
+	<div class="row" ng-repeat = "collab in infos  | filter:searchText">
+
+	    <div class="row padall" ng-class-odd="'odd'" ng-class-even="'even'">
+	        <div class="col-xs-4 col-sm-8 col-md-3 col-lg-3">
+	            <span class="label label-primary" ng-if="collab.Project_name != 'Congés payés'">Disponible !</span>
+	            <span class="label label-danger" ng-if="collab.Project_name == 'Congés payés'">Indisponible</span>
+	            <img src="../images/Photo.JPG" style="margin-top: 8px;"/>
+	        </div>
+	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
+	            <div class="clearfix">
+	                <div class="pull-left">
+	                    <span class= "icon"> {{collab.Employee_name}}</span>
+	                </div>
+	                <div class="pull-right">
+	                    Interne | PU: {{collab.Emp_prod_unit}} 
+	                </div>
+	            </div>
+	            <div>
+	                <h4><span class="fa fa-map-marker icon"></span> Projet : {{collab.Project_name}} </h4>
+	                 Client : {{collab.Customer_name}} 
+	                
+	            <div style="margin-top: 20px;">
+	                	<button type="button" class="btn btn-link " data-toggle="modal" data-target="#more" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !">
+  		<span class="glyphicon glyphicon-plus pull-right" ></span></button>
+	                	 <span class="glyphicon glyphicon-menu-up pull-right" ng-model = "extend" ng-show = "extend" ng-click = "extend = false"></span> 
+				</div>
+
+	            </div>
+	          
+	        </div>
+	  
+		</div>
+		<hr>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="more" tabindex="-1" role="dialog" aria-labelledby="moreLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="moreLabel">{{collab.Employee_name}}</h4>
+			      </div>
+			      <div class="modal-body">
+			       	<h2>{{collab.Employee_name}} - <small>{{collab.Project_name}}</small></h2>
+						<hr>
+						<blockquote class = "view_coll">
+						<p>Id : <strong>{{collab.Employee_number}}</strong>.</p>
+						<p>Nom: <strong>{{collab.Employee_name}}</strong>.</p>
+						<p>Type : <strong>{{collab.Employee_Type}}</strong>.</p>
+						<p>PU interne : <strong>{{collab.Internal_PU}}</strong>.</p>
+						<p>PU: <strong>{{collab.Emp_prod_unit}}</strong>.</p>
+						<p>Fonction : <strong>{{collab.Job_function}}</strong>.</p>
+						<p>Qualif : <strong>{{collab.Job_qualif}}</strong>.</p>
+						
+					</blockquote>
+						<hr>
+						<blockquote class = "view_coll"><p>Id projet :<strong>{{collab.Project_number}}</strong>.</p>
+						<p>Projet : <strong>{{collab.Project_name}}</strong>.</p>
+						<p>type : <strong>{{collab.Project_type}}</strong>.</p>
+						<p>Projet PU : <strong>{{collab.Project_prod_unit}}</strong>.</p></blockquote>
+						<hr>
+						<blockquote class = "view_coll"><p>Id client :<strong>{{collab.Customer_number}}</strong>.</p>
+						<p>Client :<strong>{{collab.Customer_name }}</strong>.</p></blockquote>
+						<div class="panel panel-default">
+				          <div class="panel-heading">
+				            <h4 class="panel-title">
+				              <a data-toggle="collapse" data-target="#demo">Statistiques</a>
+				            </h4>
+				          </div>
+				          <div id="demo" class="panel-collapse collapse ">
+				            <div class="panel-body">
+				            	<p>Utilisation : <span ><progressbar class="progress-striped active" value="74" type="info">74%</progressbar>
+				            	</span></p></div>
+				          </div>
+				        </div>
+						
+						
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			       
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
+	</div>
+	
+</div>

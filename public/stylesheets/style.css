@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  background: url("images/background.jpg");
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -93,12 +94,18 @@ body {
 }
 .even {
 	background-color:#F7ECF7;
+  b
 }
 
 .view_coll{
 
 background-color: #F1F1F1;
- border-radius: 0.55em  
+border-left: 4px solid #000066;
+border-radius: 0.55em;
+ margin-left: 10px;
+ padding-left: 10px;
+ padding-top: 8px;
+ padding-bottom: 5px;
 }
 
 #choix {
@@ -124,3 +131,32 @@ background-color: #F1F1F1;
 span.glyphicon:hover{
   cursor : pointer;
 }
+
+.loader{
+  background: url('images/ajax-loader.gif') 50% 50% no-repeat rgba(255, 255, 255, 0.8);
+  cursor: wait;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+  .loader h1{
+    background: none;
+    border: none;
+    color: #458976;
+    font-size: 22px;
+    font-family: "Open Sans",sans-serif;
+    font-variant: small-caps;
+    font-weight: 700;
+    height: 700px;
+    line-height: 700px;
+    margin: 0 0 10px;
+    padding: 0;
+    text-align: center;
+  }
+
+  .informations{
+    background: url("images/background.jpg") 50% 50% no-repeat rgba(255, 255, 255, 0.8);
+  }

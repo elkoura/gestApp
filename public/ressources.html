@@ -1,0 +1,52 @@
+<div class = "informations" ng-show = "authenticated">
+		<!-- <span class="glyphicon glyphicon-ban-circle"></span> Désolé ! aucun collaborateur dans la base de données. -->
+		<div class="loader" ng-hide = "collabs.length"><h1><img src="images/ajax-loader.gif"> Veuillez patientez....</h1></div>
+			
+	
+	<form class="form-horizontale">
+	  	<div class="form-group" >
+	    	<label for="title" class="control-label">Recherche par : </label>
+	    	<select class="form-control" ng-options="item.value as item.name for item in listChoix.ressources " ng-model="selected"></select>
+	  	</div>
+		<div class="input-group">
+			 <span class="input-group-addon glyphicon glyphicon-search " id="basic-addon1"></span>
+		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == '$'" data-ng-model="searchText.$" aria-describedby="basic-addon2">
+		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Name'" data-ng-model="searchText.Employee_name" aria-describedby="basic-addon2">
+		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Project_name'" data-ng-model="searchText.Project_name" aria-describedby="basic-addon2">
+		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Customer_name'"data-ng-model="searchText.Customer_name" aria-describedby="basic-addon2">
+		  <span class="input-group-addon" id="basic-addon2" ng-show = "searchText" ng-click = "vider()"><span class="glyphicon glyphicon-remove"  ></span></span>
+		</div>
+	</form>
+
+	<div class="row" ng-repeat = "collab in collabs  | filter:searchText">
+
+	    <div class="infos " ng-class-odd="'odd'" ng-class-even="'even'">
+	    	<div class="row">
+			  <div class="col-xs-4 col-sm-4">
+			  	<span class="label label-primary" ng-if="collab.Project_name != 'Congés payés'">Disponible !</span>
+	            <span class="label label-danger" ng-if="collab.Project_name == 'Congés payés'">Indisponible</span>
+	            <img  src="../images/photo.jpg" style="margin-top: 8px;"/>
+			  </div>
+			  <div class="col-xs-6 col-sm-4 col-md-6">
+			  	  <p><strong>Name: </strong> {{collab.Name}}</p>
+	              <p><strong>Qualif: </strong> {{collab.Qualif}}</p>
+	              <p> <strong>Grade: </strong>A</p>
+           		  <p> <strong>Role: </strong>Responsable</p>
+	           	
+			  </div>
+			   <div class="col-xs-1 col-sm-2">
+			  	  
+	           	  <button type="button" class="btn btn-link " data-toggle="modal" data-target="#more" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !"><span class="glyphicon glyphicon-plus pull-left" ></span></button> 
+
+			  </div>
+			</div>
+			            
+			          
+			            <div ng-include="'more_infos.html'"></div>
+		</div>
+			       
+		<hr>
+		
+	</div>
+	
+</div>
