@@ -11,13 +11,15 @@
 		<div class="input-group">
 			 <span class="input-group-addon glyphicon glyphicon-search " id="basic-addon1"></span>
 		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == '$'" data-ng-model="searchText.$" aria-describedby="basic-addon2">
-		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Name'" data-ng-model="searchText.Employee_name" aria-describedby="basic-addon2">
+		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Name'" data-ng-model="searchText.Name" aria-describedby="basic-addon2">
 		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Project_name'" data-ng-model="searchText.Project_name" aria-describedby="basic-addon2">
 		  <input type="text" class="form-control" placeholder="Tapez un mot clé..." ng-show = "selected == 'Customer_name'"data-ng-model="searchText.Customer_name" aria-describedby="basic-addon2">
 		  <span class="input-group-addon" id="basic-addon2" ng-show = "searchText" ng-click = "vider()"><span class="glyphicon glyphicon-remove"  ></span></span>
 		</div>
 	</form>
-
+	<!-- <button ng-click = "imgUrl()">clickMe</button>
+ 	<p>projet :  {{imgUrl()}}</p>  -->
+ 
 	<div class="row" ng-repeat = "collab in collabs  | filter:searchText">
 
 	    <div class="infos " ng-class-odd="'odd'" ng-class-even="'even'">
@@ -25,24 +27,24 @@
 			  <div class="col-xs-4 col-sm-4">
 			  	<span class="label label-primary" ng-if="collab.Project_name != 'Congés payés'">Disponible !</span>
 	            <span class="label label-danger" ng-if="collab.Project_name == 'Congés payés'">Indisponible</span>
-	            <img  src="../images/photo.jpg" style="margin-top: 8px;"/>
+	            <img class = "profil" src="{{imgUrl()}}" />
 			  </div>
 			  <div class="col-xs-6 col-sm-4 col-md-6">
 			  	  <p><strong>Name: </strong> {{collab.Name}}</p>
 	              <p><strong>Qualif: </strong> {{collab.Qualif}}</p>
-	              <p> <strong>Grade: </strong>A</p>
+	              <p> <strong>Grade: </strong>{{findGrade(collab.Number)}}</p>
            		  <p> <strong>Role: </strong>Responsable</p>
 	           	
 			  </div>
 			   <div class="col-xs-1 col-sm-2">
 			  	  
-	           	  <button type="button" class="btn btn-link " data-toggle="modal" data-target="#more" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !"><span class="glyphicon glyphicon-plus pull-left" ></span></button> 
+	           	  <button type="button" class="btn btn-link " data-toggle="modal" data-target="#more{{$index}}" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !"><span class="glyphicon glyphicon-plus pull-left" ></span></button> 
 
 			  </div>
 			</div>
+			<!-- infos modal -->
+			  <div ng-include="'more_infos.html'"></div>
 			            
-			          
-			            <div ng-include="'more_infos.html'"></div>
 		</div>
 			       
 		<hr>

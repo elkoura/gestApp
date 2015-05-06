@@ -64,7 +64,7 @@ app.controller('mainController', function(infoService, collabService, $scope, $h
   $scope.searchText = '';
   $scope.error_message = '';
   $scope.selected = '$';
-  $scope.valeur = 58.0;
+
 
   $scope.user = {username: '', password: ''};
   $scope.listChoix = {
@@ -78,10 +78,30 @@ app.controller('mainController', function(infoService, collabService, $scope, $h
                                    { name:'Projet', value: 'Project_name'}]            
                       };
 
-  $scope.vider = function(){
+  $scope.urls = [ 'caroline.couillard0.jpg',
+                    'Cyril.marcant.jpg', 
+                    'Hsiao.li.lung.jpg', 
+                    'Julien Said.png', 
+                    'Laura.el.bouzaidi.cheikhi.JPG', 
+                    'sylvain.tailleur.jpg', 
+                    'Thierry Rousseau.png'];
+ $scope.image = "./images/Photos/"+$scope.urls[6];
+  $scope.imgUrl = function() {
+    var index = Math.floor((Math.random()*6));
+    return $scope.image = "./images/Photos/"+$scope.urls[index];
+  }
+ 
+   $scope.vider = function(){
     $scope.searchText = '';
   };
-	
+ 
+  $scope.findGrade = function(id_Collab){
+    for(var i = 0 ;i< $scope.infos.length; i++)
+      if ($scope.infos[i].Employee_number == id_Collab) 
+        return $scope.Grade = $scope.infos[i].Grade ;
+     return "NC";
+  }; 
+	 // $scope.fprojet = findPro($scope.numb);
 });
 
 //---------------------------------------------------------------------------------------

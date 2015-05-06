@@ -7,7 +7,14 @@
 
 body {
   padding: 0;
-  background: url("images/background.jpg");
+  background: url("../images/back.jpg") no-repeat 100% 0%;
+   background-attachment: fixed;
+}
+@media all and (max-width: 500px) {
+    body {
+        background: url("../images/back_mobile.jpg") no-repeat 100% 0%;
+        background-attachment: fixed;
+    }
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -133,7 +140,7 @@ span.glyphicon:hover{
 }
 
 .loader{
-  background: url('images/ajax-loader.gif') 50% 50% no-repeat rgba(255, 255, 255, 0.8);
+  background:  50% 50% no-repeat rgba(255, 255, 255, 0.8);
   cursor: wait;
   height: 100%;
   left: 0;
@@ -157,6 +164,20 @@ span.glyphicon:hover{
     text-align: center;
   }
 
-  .informations{
-    background: url("images/background.jpg") 50% 50% no-repeat rgba(255, 255, 255, 0.8);
-  }
+
+.profil {
+  margin-top: 8px;
+  border: 2px solid #2394AD;
+}
+
+.profil.small{
+  border: 1px solid #2394AD;
+  width: 50px;
+  height: 70px;
+}
+#moreLabel{
+  margin-top: 25px;
+}
+  /*.informations{
+    background: url("../images/blog.jpg");
+  }*/

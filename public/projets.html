@@ -7,7 +7,7 @@
 	
   	<div class="form-group" >
     	<label for="title" class="control-label">Recherche par : </label>
-    	<select class="form-control" ng-options="item.value as item.name for item in listChoix " ng-model="selected"></select>
+    	<select class="form-control" ng-options="item.value as item.name for item in listChoix.projets" ng-model="selected"></select>
   	</div>
 	<div class="input-group">
 		 <span class="input-group-addon glyphicon glyphicon-search " id="basic-addon1"></span>
@@ -25,39 +25,24 @@
 	<div class="row" ng-repeat = "collab in infos  | filter:searchText">
 
 	    <div class="row padall" ng-class-odd="'odd'" ng-class-even="'even'">
-	        <div class="col-xs-4 col-sm-8 col-md-3 col-lg-3">
-	            <span class="label label-primary" ng-if="collab.Project_name != 'Congés payés'">Disponible !</span>
-	            <span class="label label-danger" ng-if="collab.Project_name == 'Congés payés'">Indisponible</span>
-	            <img src="../images/Photo.JPG" style="margin-top: 8px;"/>
-	        </div>
-	        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
-	            <div class="clearfix">
-	                <div class="pull-left">
-	                    <span class= "icon"> {{collab.Employee_name}}</span>
-	                </div>
-	                <div class="pull-right">
-	                    Interne | PU: {{collab.Emp_prod_unit}} 
-	                </div>
-	            </div>
-	            <div>
-	                <h4><span class="fa fa-map-marker icon"></span> Projet : {{collab.Project_name}} </h4>
-	                 Client : {{collab.Customer_name}} 
-	                
-	            <div style="margin-top: 20px;">
-	                	<button type="button" class="btn btn-link " data-toggle="modal" data-target="#more" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !">
-  		<span class="glyphicon glyphicon-plus pull-right" ></span></button>
-	                	 <span class="glyphicon glyphicon-menu-up pull-right" ng-model = "extend" ng-show = "extend" ng-click = "extend = false"></span> 
-				</div>
+	        
+	        <div class="col-xs-10 col-sm-8 col-md-10" >
+	              <p><strong>Projet: </strong> {{collab.Project_name}}</p>
+	              <p><strong>Client: </strong> {{collab.Customer_name}}</p>
+	              <p> {{collab.Employee_name}} | PU: {{collab.Emp_prod_unit}}</p> 
+			</div>
 
-	            </div>
-	          
-	        </div>
+	        <div class="col-xs-1 col-sm-2">
+			  	  
+	           	  <button type="button" class="btn btn-link " data-toggle="modal" data-target="#more{{$index}}" data-toggle="tooltip" data-placement="top" title="Appuyez pour plus d'infos !"><span class="glyphicon glyphicon-plus pull-left" ></span></button> 
+
+			  </div>
 	  
 		</div>
 		<hr>
 			
 			<!-- Modal -->
-			<div class="modal fade" id="more" tabindex="-1" role="dialog" aria-labelledby="moreLabel" aria-hidden="true">
+			<div class="modal fade" id="more{{$index}}" tabindex="-1" role="dialog" aria-labelledby="moreLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -75,29 +60,20 @@
 						<p>PU: <strong>{{collab.Emp_prod_unit}}</strong>.</p>
 						<p>Fonction : <strong>{{collab.Job_function}}</strong>.</p>
 						<p>Qualif : <strong>{{collab.Job_qualif}}</strong>.</p>
-						
-					</blockquote>
+						<p>Grade : <strong>{{collab.Grade}}</strong>.</p>
+						<p>Skill center : <strong>{{collab.Skill_center}}</strong>.</p>
+						</blockquote>
 						<hr>
 						<blockquote class = "view_coll"><p>Id projet :<strong>{{collab.Project_number}}</strong>.</p>
 						<p>Projet : <strong>{{collab.Project_name}}</strong>.</p>
 						<p>type : <strong>{{collab.Project_type}}</strong>.</p>
-						<p>Projet PU : <strong>{{collab.Project_prod_unit}}</strong>.</p></blockquote>
+						<p>Projet PU : <strong>{{collab.Project_prod_unit}}</strong>.</p>
+						<p>Contribution : <strong>{{collab.Contribution}} euro</strong>.</p>
+						</blockquote>
 						<hr>
 						<blockquote class = "view_coll"><p>Id client :<strong>{{collab.Customer_number}}</strong>.</p>
-						<p>Client :<strong>{{collab.Customer_name }}</strong>.</p></blockquote>
-						<div class="panel panel-default">
-				          <div class="panel-heading">
-				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-target="#demo">Statistiques</a>
-				            </h4>
-				          </div>
-				          <div id="demo" class="panel-collapse collapse ">
-				            <div class="panel-body">
-				            	<p>Utilisation : <span ><progressbar class="progress-striped active" value="74" type="info">74%</progressbar>
-				            	</span></p></div>
-				          </div>
-				        </div>
-						
+						<p>Client :<strong>{{collab.Customer_name }}</strong>.</p>
+						</blockquote>
 						
 			      </div>
 			      <div class="modal-footer">
@@ -107,7 +83,7 @@
 			    </div>
 			  </div>
 			</div>
-		
+			<!-- fin Modal -->
 	</div>
 	
 </div>

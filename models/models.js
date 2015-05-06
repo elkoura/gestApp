@@ -19,7 +19,10 @@ var infoSchema = new mongoose.Schema({
     Project_type : String,
     Project_prod_unit : String,
     Customer_number : Number,
-    Customer_name : String
+    Customer_name : String,
+    Grade : String,
+    Contribution : String,
+    Skill_center : String
 });
 
 var collabSchema = new mongoose.Schema({
